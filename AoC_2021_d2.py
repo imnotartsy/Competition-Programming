@@ -11,9 +11,8 @@ def distance(arr):
     x = 0
     y = 0
     for line in arr:
-        splitin = line.split()
-        dir = splitin[0]
-        dist = int(splitin[1])
+        dir, dist = line.split()
+        dist = int(dist)
 
         if dir == "forward":
             x += dist
@@ -31,9 +30,8 @@ def distance2(arr):
     y = 0
     aim = 0
     for line in arr:
-        splitin = line.split()
-        dir = splitin[0]
-        dist = int(splitin[1])
+        dir, dist = line.split()
+        dist = int(dist)
 
         if dir == "forward":
             # depth by your aim multiplied by X.

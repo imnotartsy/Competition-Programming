@@ -48,16 +48,10 @@ def binarydiag(board):
     for i in range(cols):
 
         # Get Counts for each elem set 
-        s0 = 0
-        for string in oxy_set:
-            if string[i] == '0':
-                s0 += 1
+        s0 = sum(string[i] == '0' for string in oxy_set)
         oxy_check = '1' if s0 <= len(oxy_set) - s0 else '0'
 
-        s0 = 0
-        for string in co2_set:
-            if string[i] == '0':
-                s0 += 1
+        s0 = sum(string[i] == '0' for string in oxy_set)
         co2_check = '0' if s0 <= len(co2_set) - s0 else '1'
     
         # Eliminate based on checks

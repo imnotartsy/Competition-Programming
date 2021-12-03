@@ -36,3 +36,5 @@ def countTrees(arr):
 
 arr = readFile("AoC_2020_d3_input.txt")
 print(countTrees(arr))
+
+# 5872458240
