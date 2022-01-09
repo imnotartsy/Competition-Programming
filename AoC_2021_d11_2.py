@@ -48,8 +48,14 @@ def octoFlash(octos, checked, pos):
     checked[pos[0]][pos[1]] = 1
     globals.flash += 1
     globals.singleflash += 1
+    
+    ## An Attempt at Readability
+    has_left = True if pos[0] > 0 else False
+    has_right = True if pos[0] < len(octos)-1 else False
+    has_above = True if pos[1] > 0 else False
+    has_below = True if pos[1] < len(octos[0]) - 1 else False
 
-    if pos[0] > 0:
+    if has_left:
         
         ## Left
         octos[pos[0]-1][pos[1]] += 1
@@ -57,18 +63,18 @@ def octoFlash(octos, checked, pos):
             octoFlash(octos, checked, [pos[0]-1, pos[1]])
 
         ## Upper Left
-        if pos[1] > 0:
+        if has_above:
             octos[pos[0]-1][pos[1]-1] += 1
             if octos[pos[0]-1][pos[1]-1] > 9 and checked[pos[0]-1][pos[1]-1] == 0:
                 octoFlash(octos, checked, [pos[0]-1, pos[1]-1])
 
         ## Lower Left
-        if pos[1] < len(octos[0]) - 1:
+        if has_below:
             octos[pos[0]-1][pos[1]+1] += 1
             if octos[pos[0]-1][pos[1]+1] > 9 and checked[pos[0]-1][pos[1]+1] == 0:
                 octoFlash(octos, checked, [pos[0]-1, pos[1]+1])
 
-    if pos[0] < len(octos)-1:
+    if has_right:
 
         ## Right
         octos[pos[0]+1][pos[1]] += 1
@@ -76,25 +82,25 @@ def octoFlash(octos, checked, pos):
             octoFlash(octos, checked, [pos[0]+1, pos[1]])
     
         ## Upper Right
-        if pos[1] > 0:
+        if has_above:
             octos[pos[0]+1][pos[1]-1] += 1
             if octos[pos[0]+1][pos[1]-1] > 9 and checked[pos[0]+1][pos[1]-1] == 0:
                 octoFlash(octos, checked, [pos[0]+1, pos[1]-1])
 
         ## Lower Right
-        if pos[1] < len(octos[0]) - 1:
+        if has_below:
             octos[pos[0]+1][pos[1]+1] += 1
             if octos[pos[0]+1][pos[1]+1] > 9 and checked[pos[0]+1][pos[1]+1] == 0:
                 octoFlash(octos, checked, [pos[0]+1, pos[1]+1])
 
     ## Top
-    if pos[1] > 0:
+    if has_above:
         octos[pos[0]][pos[1]-1] += 1
         if octos[pos[0]][pos[1]-1] > 9 and checked[pos[0]][pos[1]-1] == 0:
             octoFlash(octos, checked, [pos[0], pos[1]-1])
 
     ## Bottom
-    if pos[1] < len(octos[0]) - 1:
+    if has_below:
         octos[pos[0]][pos[1]+1] += 1
         if octos[pos[0]][pos[1]+1] > 9 and checked[pos[0]][pos[1]+1] == 0:
             octoFlash(octos, checked, [pos[0], pos[1]+1])
