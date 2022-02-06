@@ -46,7 +46,7 @@ def distance2(arr):
 
     return x * y
 
-arr = readFile("AoC_2021_d2_input.txt")
+arr = readFile("AoC_Inputs/AoC_2021_d2_input.txt")
 print(distance(arr))
 print(distance2(arr))
 

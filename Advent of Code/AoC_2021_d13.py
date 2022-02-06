@@ -5,21 +5,6 @@ def readFile(fileName):
         fileObj.close()
         return words
 
-# https://stackoverflow.com/questions/287871/how-to-print-colored-text-to-the-terminal
-class bcolors:
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKCYAN = '\033[96m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m' # yellow
-    FAIL = '\033[91m'    # red
-    ENDC = '\033[0m'     # normal
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
-
-
-
-    # print(bcolors.WARNING + string + bcolors.ENDC, end="  ")
 
 
 def printBoard(board, x, y):
@@ -29,32 +14,42 @@ def printBoard(board, x, y):
         print()
     print()
 
+
+
 def function(arr):
     print(arr)
 
+    ## * Parses Inputs
     coords = []
     folds = []
     foldinput = False
     for line in arr:
+        # Parse '#' input
         if line != "" and not foldinput:
             coord = line.split(",")
             coords.append([int(coord[0]), int(coord[1])])
+        
+        # Parse fold input
         elif foldinput:
             temp = line.split(" ")
             fold = temp[2].split("=")
             folds.append([fold[0], int(fold[1])])
+
+        # If newline, fold input starts
         else:
             foldinput = True
 
-    Xmax = 0
-    Ymax = 0
+    ## * Preps "Paper"
+    ## Get X and Y maxes for array creation
+    Xmax = 0 # max(lis, key=lambda x:x[0])[0]
+    Ymax = 0 # max(lis, key=lambda x:x[1])[1]
     for coord in coords:
         if coord[0] > Xmax:
             Xmax = coord[0]
         if coord[1] > Ymax:
             Ymax = coord[1]
 
-
+    ## Create board
     board = []
     for i in range(Xmax+1):
         line = []
@@ -62,46 +57,40 @@ def function(arr):
             line.append('.')
         board.append(line)
 
-
-    # printBoard(board, Xmax, Ymax)
     
-
+    ## Enters '#''s into board
     for coord in coords:
         board[coord[0]][coord[1]] = '#'
 
     printBoard(board, Xmax, Ymax)
     print(len(board), len(board[0]))
     print(Xmax, Ymax)        
-    ## done prepping board
+    ## Done prepping board
 
 
+    ## Performs each fold; P1 change to 1 fold
     for f in range(len(folds)):
         fold = folds[f]
         print(fold)
+
         if fold[0] == 'y':
             y = fold[1]
             for j in range(y):
                 for i in range(Xmax + 1):
-                    # print("" + str(i) + ":", j, board[i][j], (2*y) - j, board[i][(2*y) - j])
                     if board[i][j] == '#' or (((2*y) - j) <= Ymax and board[i][(2*y) - j] == '#'):
                         board[i][j] = '#'
-                    # print(board[i][j], end="")    # print("match")
-                    # print("(" + str(i) + "," + str(j) + ")", board[i][j],  "(" + str(i) + "," + str((2*y) - j) + ")", board[i][(2*y) - j])
-                # print()
-                    
             Ymax = y - 1
+
+
         elif fold[0] == 'x':
             x = fold[1]
             for i in range(x):
                 for j in range(Ymax + 1):
-                    # print("" + str(i) + ":", j, board[i][j], (2*y) - j, board[i][(2*y) - j])
                     if board[i][j] == '#' or (((2*x)-i) <= Xmax and board[(2*x)-i][j] == '#'):
                         board[i][j] = '#'
-                    # print(board[i][j], end="")    # print("match")
-                    # print("(" + str(i) + "," + str(j) + ")", board[i][j],  "(" + str(i) + "," + str((2*y) - j) + ")", board[i][(2*y) - j])
-                # print()
-                    
             Xmax = x - 1
+
+
         printBoard(board, Xmax, Ymax)
 
     count = 0
@@ -110,12 +99,6 @@ def function(arr):
             if board[i][j] == '#':
                 count += 1
 
-    # print(Xmax, Ymax)
-
-    # print(coords)
-    # print(folds)
-
-    # printBoard(board, Xmax, Ymax)
 
     return count
 

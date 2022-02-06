@@ -51,7 +51,7 @@ def slidingWindow(arr):
 #     263
 # ]
 
-arr = readFile("AoC_2021_d1_input2.txt")
+arr = readFile("AoC_Inputs/AoC_2021_d1_input2.txt")
 
 print(slidingWindow(arr))
 print(increaseCount(arr))

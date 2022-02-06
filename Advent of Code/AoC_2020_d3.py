@@ -34,7 +34,7 @@ def countTrees(arr):
     return totalTrees
 
 
-arr = readFile("AoC_2020_d3_input.txt")
+arr = readFile("AoC_Inputs/AoC_2020_d3_input.txt")
 print(countTrees(arr))
 
 # 5872458240

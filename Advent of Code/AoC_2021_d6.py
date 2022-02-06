@@ -56,8 +56,9 @@ def function2(arr):
         fishhh[6] = fishhh[7] + birthing
         fishhh[7] = fishhh[8] 
         fishhh[8] = birthing
+        print(fishhh)
 
-    # print(fishhh)
+    print(fishhh)
     fish_count = 0
     for fish in fishhh:
         fish_count += fish

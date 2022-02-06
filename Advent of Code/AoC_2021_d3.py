@@ -81,5 +81,5 @@ def binarydiag(board):
     return int(oxy_dec) * int(co2_dec)
 
 
-arr = readFile("AoC_2021_d3_input.txt")
+arr = readFile("AoC_Inputs/AoC_2021_d3_input.txt")
 print(binarydiag(arr))

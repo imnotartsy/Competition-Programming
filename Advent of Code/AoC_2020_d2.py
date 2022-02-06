@@ -34,7 +34,7 @@ def validPass(arr):
 def validPass2(arr):
     validCount = 0
     for line in arr:
-        # print(line)
+
         x = line.split(" ")
         # for word in x:
         bounds = x[0].split("-")
@@ -44,17 +44,17 @@ def validPass2(arr):
         letter = x[1][:-1]
         pw = x[2]
 
-        print(pw, "\t", pw[lower-1], pw[upper-1], "\t", letter, end="")
+        # print(pw, "\t", pw[lower-1], pw[upper-1], "\t", letter, end="")
         if pw[lower-1] == letter and not(pw[upper-1] == letter):
             validCount += 1
-            print("\t MATCH", end="")
+            # print("\t MATCH", end="")
         elif not(pw[lower-1] == letter) and pw[upper-1] == letter:
             validCount += 1
-            print("\t MATCH", end="")
-        print()
+            # print("\t MATCH", end="")
+        # print()
 
     return validCount
 
-arr = readFile("AoC_2020_d2_input.txt")
+arr = readFile("AoC_Inputs/AoC_2020_d2_input.txt")
 # print(validPass(arr))
 print(validPass2(arr))
