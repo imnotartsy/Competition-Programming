@@ -39,13 +39,6 @@ def function(arr):
         else:
             print("\tE", pairs[0], "does not overlap", pairs[1])
 
-    print(sum)
-
-
-    # not 548
-
-    # not 40-, 669
-
     return sum
 
 
