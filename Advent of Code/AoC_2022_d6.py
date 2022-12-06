@@ -13,12 +13,12 @@ def function(arr):
     for i in range(len(arr[0])):
 
         # * part 1 & 2
-        interval = 4 # 4 for part 1; 14 for part 2
+        interval = 14 # 4 for part 1; 14 for part 2
         match = False
 
         # if past buffer
         if i >= interval-1:
-            # print("Testing:", arr[0][i], arr[0][i-interval-1:i], i-interval-1, i)
+            print("Testing:", arr[0][i], arr[0][i-(interval-1):i], i-(interval-1), i)
 
             # for each number in the interval
             for k in range(0, interval-1):
@@ -36,7 +36,7 @@ def function(arr):
                     break
 
             if not match:
-                # print("\tVALID Interval", i, arr[0][i], arr[0][i-interval-1:i])
+                print("\tVALID Interval", i, arr[0][i], arr[0][i-(interval-1):i])
                 return i + 1
 
 arr = readFile("AoC_Inputs/AoC_2022_d6_input.txt")
